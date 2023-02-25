@@ -11,7 +11,7 @@ class FetchDreiverdlt extends DriverEvent {
 }
 class FetchDreiverAdd extends DriverEvent {
   String name;
-  String mobile;
   String licenseNo;
-  FetchDreiverAdd({required this.name,required this.mobile,required this.licenseNo});
+  String mobile;
+  FetchDreiverAdd({required this.name,required this.licenseNo,required this.mobile});
 }

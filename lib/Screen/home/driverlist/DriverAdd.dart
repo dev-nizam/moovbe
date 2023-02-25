@@ -17,7 +17,7 @@ class _DriverAddState extends State<DriverAdd> {
   Widget build(BuildContext context) {
     final mHeigth = MediaQuery.of(context).size.height;
     final mWidth = MediaQuery.of(context).size.width;
-    String mobi ="";
+    String mobi ="5555";
     return Scaffold(resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 70,
@@ -33,23 +33,17 @@ class _DriverAddState extends State<DriverAdd> {
       ),
       body: BlocListener<DriverBloc, DriverState>(
   listener: (context, state) {
-    if (state is DriverLoading) {
-      print("loading");
-    }
+
     if (state is DriverAdded) {
-      // final userid=state.data.user!.id;
-      // final token=state.data.tokens!.accessToken;
-      // savetoken(token!);
       print("loaded");
-      Navigator.push(
-          context, MaterialPageRoute(builder: (ctx) => DriverList()));
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context)  => DriverList()));
 
-      // String token = state.Token;
+
 
     }
-    if (state is DriverError) {
-      print("Error");
-    }
+
   },
   child: Container(height: mHeigth*9,
         margin: EdgeInsets.only(left: 60),
@@ -118,9 +112,9 @@ class _DriverAddState extends State<DriverAdd> {
               width: mWidth * .65,
               child:ElevatedButton(
                 onPressed: (){
-                  // BlocProvider.of<DriverBloc>(context).add(FetchDreiverAdd(name: _nameController.text,
-                  //     licenseNo: _licenseController.text,
-                  //     mobile: mobi));
+                  BlocProvider.of<DriverBloc>(context).add(FetchDreiverAdd(name: _nameController.text,
+                      licenseNo: _licenseController.text,
+                      mobile: mobi.toString()));
 
 
                 },

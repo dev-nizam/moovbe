@@ -17,31 +17,32 @@ class DriverListApi {
     print(response.body);
     return DriverListModel.fromJson(jsonDecode(response.body));
   }
-  Future<DriverListModel> PostDriverAdd({
+  Future<DeleteDriverModel> PostDriverAdd({
     required String name,
-    required String mobile,
     required String licenseNo,
+    required String mobile,
   }) async {
     final preference = await SharedPreferences.getInstance();
-    String basePath = "DriverApi/${preference.getString('userId')}/";
+    String basePath = "DriverApi/${preference.getString('userid')}/";
     var body = {
       "name": name,
+      "license_no": licenseNo,
       "mobile": mobile,
-      "licenseNo": licenseNo,
     };
+    print(body);
     Response response =
-    await apiClient.invokeAPI(path: basePath, method: "POST", body: body);
+    await apiClient.invokeAPI(path: basePath, method: "POST_", body: body);
     print(response.body);
-    return DriverListModel.fromJson(jsonDecode(response.body));
+    return DeleteDriverModel.fromJson(jsonDecode(response.body));
   }
   Future<DeleteDriverModel> dltDriver({required String driverId}) async {
     final preference = await SharedPreferences.getInstance();
-    String basePath = "DriverApi/${preference.getString('userId')}/";
+    String basePath = "DriverApi/${preference.getString('userid')}/";
     var body = {
       "driver_id": driverId,
     };
     Response response =
-    await apiClient.invokeAPI(path: basePath, method: "DELETE", body: null);
+    await apiClient.invokeAPI(path: basePath, method: "DELETE", body: body);
     print(response.body);
     return DeleteDriverModel.fromJson(jsonDecode(response.body));
   }

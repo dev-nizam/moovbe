@@ -45,12 +45,16 @@ class ApiClient {
         break;
       case "DELETE":
         response = await delete(Uri.parse(url),
-            headers: nullableHeaderParams, body: body);
+            headers: {
+              'Authorization': 'Bearer ${prefs.getString('token')}',
+            }, body: body);
         break;
       case "POST_":
         response = await post(
           Uri.parse(url),
-          headers: {},
+          headers: {
+            'Authorization': 'Bearer ${prefs.getString('token')}',
+          },
           body: body,
         );
         break;

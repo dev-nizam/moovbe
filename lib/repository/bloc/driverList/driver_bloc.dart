@@ -27,29 +27,30 @@ DriverListApi driverListApi=DriverListApi();
 
       // TODO: implement event handler
     });
-    // on<FetchDreiverdlt>((event, emit) async {
-    //   emit(DriverLoading());
-    //   try {
-    //     deleteDriverModel = await driverListApi.dltDriver(driverId:event.driverId);
-    //     emit(DriverDeleted());
-    //   } catch (e) {
-    //     print("Error>>>>>>>>>>>>>>>>>>>>>>>>>" + e.toString());
-    //     emit(DriverError());
-    //   }
-    //
-    //   // TODO: implement event handler
-    // });
-    // on<FetchDreiverAdd>((event, emit) async {
-    //   emit(DriverLoading());
-    //   try {
-    //     driverListModel = await driverListApi.PostDriverAdd(name: event.name, mobile: event.mobile, licenseNo: event.licenseNo);
-    //     emit(DriverAdded());
-    //   } catch (e) {
-    //     print("Error>>>>>>>>>>>>>>>>>>>>>>>>>" + e.toString());
-    //     emit(DriverError());
-    //   }
-    //
-    //   // TODO: implement event handler
-    // });
+    on<FetchDreiverdlt>((event, emit) async {
+      emit(DriverDltLoading());
+      try {
+        deleteDriverModel = await driverListApi.dltDriver(driverId:event.driverId);
+        emit(DriverDltLoaded());
+      } catch (e) {
+        print("Error>>>>>>>>>>>>>>>>>>>>>>>>>" + e.toString());
+        emit(DriverDltError());
+      }
+
+      // TODO: implement event handler
+    });
+    on<FetchDreiverAdd>((event, emit) async {
+      emit(DriverLoading());
+      try {
+        deleteDriverModel = await driverListApi.PostDriverAdd(name: event.name, licenseNo: event.licenseNo, mobile: event.mobile,);
+
+        emit(DriverAdded());
+      } catch (e) {
+        print("Error>>>>>>>>>>>>>>>>>>>>>>>>>" + e.toString());
+        emit(DriverError());
+      }
+
+      // TODO: implement event handler
+    });
   }
 }

@@ -15,7 +15,7 @@ class _ClickBusState extends State<ClickBus> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70,
-        title: Text("hjjg"),
+        title: Text("Swift Scania p-series"),
         backgroundColor:Color(0xFF050505) ,
       ),
       body: Container(margin: EdgeInsets.all(10),
@@ -40,8 +40,8 @@ class _ClickBusState extends State<ClickBus> {
                           SizedBox(
                             height:mHeigth*0.02 ,
                           ),
-                          Text("hghghjhjfssffsf",style: TextStyle(color: Colors.white,fontSize: 25),),
-                          Text("hghghjhj",style: TextStyle(color: Colors.white),),
+                          Text("Rohit sharma",style: TextStyle(color: Colors.white,fontSize: 25),),
+                          Text("License no: PJ515196161655",style: TextStyle(color: Colors.white,fontSize: 8),),
                         ],
                       ),
                     ),
