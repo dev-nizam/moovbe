@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moovbe/Screen/home/Home.dart';
+import 'package:moovbe/repository/bloc/login/login_bloc.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -17,7 +19,27 @@ class _LoginState extends State<Login> {
     final mHeigth=MediaQuery.of(context).size.height;
     final mWidth=MediaQuery.of(context).size.width;
     return Scaffold(resizeToAvoidBottomInset: false,
-      body: Container(
+      body: BlocListener<LoginBloc, LoginState>(
+  listener: (context, state) {
+    if (state is LoginLoading) {
+      print("loading");
+    }
+    if (state is LoginLoaded) {
+      // final userid=state.data.user!.id;
+      // final token=state.data.tokens!.accessToken;
+      // savetoken(token!);
+      print("loaded");
+      Navigator.push(
+          context, MaterialPageRoute(builder: (ctx) => Home()));
+
+      // String token = state.Token;
+
+    }
+    if (state is LoginError) {
+      print("Error");
+    }
+  },
+  child: Container(
         child: Column(
           children: [
             Stack(
@@ -99,15 +121,14 @@ class _LoginState extends State<Login> {
               width: mWidth * .65,
               child:ElevatedButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (ctx)=>Home(
-
-                  )));
+                  BlocProvider.of<LoginBloc>(context).add(FetchLogin(Email: _emailController.text, password: _passwordController.text));
                 },child: Text("GetStarted",style: TextStyle(color:Colors.white),),style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFfc153b))),) ,
 
             )
           ],
         ),
       ),
+),
     );
   }
 

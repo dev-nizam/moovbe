@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moovbe/Screen/widgets/Start.dart';
 import 'package:moovbe/Screen/widgets/splash.dart';
+import 'package:moovbe/repository/bloc/driverList/driver_bloc.dart';
+import 'package:moovbe/repository/bloc/login/login_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (BuildContext context)=>LoginBloc()),
+        BlocProvider(create: (BuildContext context)=>DriverBloc()),
+
+
+
+      ],
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -107,13 +107,13 @@ class _HomeState extends State<Home> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text("KSRTC"),
-                                      Text("kjhkjskjfkj kjskjhjk"),
+                                      Text("Swift Scania p-series"),
                                     ],
                                   ),
                                   ElevatedButton(
                                       onPressed: () {},
                                       child: Text(
-                                        "hgad",
+                                        "manage",
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       style: ButtonStyle(
